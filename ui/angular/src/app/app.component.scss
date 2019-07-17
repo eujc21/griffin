@@ -21,13 +21,25 @@ under the License.
 * {
   color: white;
 }
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #ffffff;
-  background-color: transparent;
+.app-container {
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+		nav {
+		  margin: 0;
+		}
+  }
 }
 
+.navbar .navbar-default .navbar-nav{
+  margin: 0 !important;
+  > li > a {
+    &:hover, &:focus {
+      color: #ffffff;
+      background-color: transparent;
+    }
+  }
+}
 /* .navbar-default {
   background-color: #060606;
   border-color: #282828;
@@ -57,16 +69,14 @@ input {
 
 .dropdown-menu {
   background-color: #222222;
-}
-
-.dropdown-menu > li > a {
-  color: #ffffff;
-}
-
-.dropdown-menu > li > a:hover {
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #2a9fd6;
+  > li > a {
+    color: #ffffff;
+    &:hover {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #2a9fd6;
+    }
+  }
 }
 
 .navbar-default .navbar-nav > .open > a {
@@ -96,40 +106,33 @@ hr {
 }
 
 @media (min-width: 992px) {
-
   #content-row {
     margin-top: 12em;
     margin-bottom: 7em;
   }
-
   #bark-description {
     display: block;
   }
-
   #bark-description-2 {
     display: none;
   }
 }
 
 @media (max-width: 991px) {
-
   #content-row {
     margin-top: 0em;
     margin-bottom: 0em;
   }
-
   #bark-description {
     display: none;
   }
-
   #bark-description-2 {
     margin-top: 3em;
     display: block;
   }
 }
 
-#bark-description p,
-#bark-description-2 p {
+#bark-description p, #bark-description-2 p {
   margin-left: 100px;
   color: #ffffff;
   font-size: 20px;

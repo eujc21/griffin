@@ -14,7 +14,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 */
-import {Component, Directive, ViewContainerRef, OnInit, AfterViewChecked} from "@angular/core";
+import {Component, Directive, ViewContainerRef, OnInit, AfterViewChecked, HostBinding} from "@angular/core";
 import {Router} from "@angular/router";
 import {XHRBackend} from '@angular/http';
 import * as $ from "jquery";
@@ -22,11 +22,13 @@ import {ServiceService} from "./service/service.service";
 import {UserService} from "./service/user.service";
 import {Location, LocationStrategy, HashLocationStrategy} from "@angular/common";
 import {HttpClient} from "@angular/common/http";
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  styleUrls: ["./app.component.scss"],
+  encapsulation: ViewEncapsulation.None,
   providers: [ServiceService, UserService]
 })
 export class AppComponent implements AfterViewChecked, OnInit {
@@ -34,7 +36,7 @@ export class AppComponent implements AfterViewChecked, OnInit {
   ntAccount: string;
   timestamp: Date;
   fullName: string;
-
+  @HostBinding('class.app-container') someField: boolean = false;
   onResize(event) {
     this.resizeMainWindow();
   }
@@ -46,6 +48,7 @@ export class AppComponent implements AfterViewChecked, OnInit {
   ngOnInit() {
     this.ntAccount = this.userService.getCookie("ntAccount");
     this.fullName = this.userService.getCookie("fullName");
+    this.someField = true;
   }
 
   constructor(
